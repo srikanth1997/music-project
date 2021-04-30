@@ -5,6 +5,7 @@ import logo from "../../images/SharpSpring.png";
 import avatar from "../../images/avatar.jpg";
 import TablePagination from "@material-ui/core/TablePagination";
 import useDebounce from "../../Hooks/useDebounse";
+import axios from "axios";
 
 function Albums({ title, fetchUrl }) {
   const [term, setTerm] = useState("taylor");
@@ -22,6 +23,10 @@ function Albums({ title, fetchUrl }) {
     const response = await fetch(api_url);
     const json = await response.json();
     await setAlbums(json.results);
+
+    // Below steps for call with axios
+    // const axios_response = await axios.get(api_url);
+    // await setAlbums(axios_response.data);
   }, [debouncedTerm]);
 
   useEffect(() => {
