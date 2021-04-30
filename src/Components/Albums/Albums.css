@@ -1,0 +1,55 @@
+.row {
+  height: auto;
+  width: 100%;
+  display: inline-block;
+  /* background: rgba(0, 0, 0, 0.7); */
+  /* background: black; */
+}
+
+.albums-search {
+  width: "100%";
+  height: "auto";
+  display: "inline-block";
+}
+
+.search-container {
+  /* border: 2px solid black; */
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+}
+
+.Nav-label {
+  padding-right: 1em;
+}
+
+.search-bar {
+  border-radius: 10px;
+  width: 20%;
+  outline: unset;
+  padding-left: 1em;
+  font-weight: bold;
+}
+
+.search-label {
+  position: relative;
+  color: white;
+}
+
+/* .search-icon {
+  position: "absolute";
+  height: "40px";
+  line-height: "40px";
+  left: "12px";
+  fontsize: "1.4em";
+} */
+
+.albums-container {
+  padding: 1em 2em 1em 2em;
+  background: bottom;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
