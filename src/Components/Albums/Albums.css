@@ -53,3 +53,12 @@
   flex-wrap: wrap;
   flex-direction: row;
 }
+
+
+.pagination{
+  color: white !important;
+}
+
+.MuiSelect-icon{
+  color:  inherit !important;
+}

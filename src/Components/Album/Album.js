@@ -5,7 +5,9 @@ function Album({ album }) {
   return (
     <div className="album-div">
       <a className="anchor-class"
-      href={album.collectionViewUrl}>
+      href={album.collectionViewUrl}
+      target="_blank"
+      >
         <div className="image-container">
           <img
             className="img-responsive"
