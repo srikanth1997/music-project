@@ -4,6 +4,7 @@ import "./Albums.css";
 import logo from "../../images/SharpSpring.png";
 import avatar from "../../images/avatar.jpg";
 import TablePagination from "@material-ui/core/TablePagination";
+import useDebounce from "../../Hooks/useDebounse";
 
 function Albums({ title, fetchUrl }) {
   const [term, setTerm] = useState("taylor");
@@ -12,32 +13,20 @@ function Albums({ title, fetchUrl }) {
   const [albumsPerPage, setAlbumsPerPage] = useState(10);
   const [lastIndex, setLastIndex] = useState(0);
   const [firstIndex, setFirstIndex] = useState(10);
+  const debouncedTerm = useDebounce(term, 400);
 
   const getData = useCallback(async () => {
     const MEDIA = "music";
-    const api_url = `/search/?term=${term}&media=${MEDIA}`;
+    const api_url = `/search/?term=${debouncedTerm}&media=${MEDIA}`;
+    // const api_url = `/search/?term=${term}&media=${MEDIA}`;
     const response = await fetch(api_url);
     const json = await response.json();
     await setAlbums(json.results);
-  }, [term]);
+  }, [debouncedTerm]);
 
   useEffect(() => {
     getData();
-  }, [term, getData]);
-
-  function handleKeyPress(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      console.log(event.target.value);
-      setTerm(event.target.value);
-    }
-  }
-
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   console.log(event.target.value);
-  //   setTerm(event.target.value);
-  // }
+  }, [debouncedTerm, getData]);
 
   const handleChangePage = (event, newPageNum) => {
     setPageNumber(newPageNum);
@@ -52,13 +41,27 @@ function Albums({ title, fetchUrl }) {
     setFirstIndex(event.target.value);
   }
 
+
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      setTerm(event.target.value);
+    }
+  }
+
   return (
     <div className="row">
       <form id="searchbox" className="search-container">
-      <a href = "https://sharpspring.com/" target = "_blank"> 
-      <img className="company_logo" src={logo} href="https://sharpspring.com/" target="_blank" alt="company_logo" />
-
-      </a>
+        <a href="https://sharpspring.com/" target="_blank" rel="noreferrer">
+          <img
+            className="company_logo"
+            src={logo}
+            href="https://sharpspring.com/"
+            target="_blank"
+            rel="noreferrer"
+            alt="company_logo"
+          />
+        </a>
         <label className="search-label">
           <span className="Nav-label">Search your favorite artist</span>
 
@@ -67,12 +70,8 @@ function Albums({ title, fetchUrl }) {
             type="text"
             search="search"
             onKeyPress={handleKeyPress}
+            onChange={(e) => setTerm(e.target.value)}
           />
-          {/* <i
-            className="fa fa-search fa-3"
-            aria-hidden="true"
-            onClick={handleClick}
-          ></i> */}
         </label>
         <img className="user_avatar" src={avatar} alt="user_avatar" />
       </form>

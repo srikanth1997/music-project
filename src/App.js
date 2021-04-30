@@ -1,5 +1,5 @@
-import './App.css';
-import Albums from './Components/Albums/Albums';
+import "./App.css";
+import Albums from "./Components/Albums/Albums";
 
 function App() {
   return (

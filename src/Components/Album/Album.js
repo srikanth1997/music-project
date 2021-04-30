@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import "./Album.css";
 function Album({ album }) {
 
@@ -7,6 +6,7 @@ function Album({ album }) {
       <a className="anchor-class"
       href={album.collectionViewUrl}
       target="_blank"
+      rel="noreferrer"
       >
         <div className="image-container">
           <img

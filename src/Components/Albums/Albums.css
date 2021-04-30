@@ -13,7 +13,6 @@
 }
 
 .search-container {
-  /* border: 2px solid black; */
   width: 100%;
   padding: 10px;
   background-color: black;
@@ -36,14 +35,6 @@
   color: white;
 }
 
-/* .search-icon {
-  position: "absolute";
-  height: "40px";
-  line-height: "40px";
-  left: "12px";
-  fontsize: "1.4em";
-} */
-
 .albums-container {
   padding: 1em 2em 1em 2em;
   background: bottom;
@@ -54,11 +45,10 @@
   flex-direction: row;
 }
 
-
-.pagination{
+.pagination {
   color: white !important;
 }
 
-.MuiSelect-icon{
-  color:  inherit !important;
+.MuiSelect-icon {
+  color: inherit !important;
 }
